@@ -85,8 +85,10 @@ kompose version
 Y ahora instalaremos nuestro servicio de minikubes. Para ello primero descargaremos el instalador de la ultima version desde el siguiente enlace: https://minikube.sigs.k8s.io/docs/start/
 con esto hecho, modificaremos la variable de entorno path con el siguiente comando en un powershell con permisos de administrador administrador:
 
->$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine) if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
->}
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
+[Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
+}
 
 En caso de que esto no se pueda, podemos sobre escribir la variable de path entrando en la aplicacion "editar las variables del entorno"
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/a054e2ff-a184-40cd-af36-63b7fd988759)
@@ -101,3 +103,9 @@ Con esto hecho, cerraremos la consola y la volveremos a abrir antes de continuar
 El siguiente paso se puede saltar en caso de que ya se tengan los archivos yaml: usaremos el comando kompose convert -f docker-compose.yaml para convertir nuestro archivo docker compose en archivos de tipo yaml para kubernetes.
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/266ba4ac-7450-4ede-9634-339b7db54f7d)
 
+con los yaml en nuestras manos, primero pasaremos a iniciar nuestro minikube con el comando 
+
+minikube start
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/cbdf208b-12c3-4db8-96e3-e7031ba8d6f3)
+
+(Para hacer uso de este comando, deberemos tener nuestra aplicacion de docker desktop activa)
