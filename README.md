@@ -18,7 +18,7 @@ Imagen de la interfaz de objeto
 
 Requisitos preevios:
 
-Visual stuio code
+Visual studio code
 Instalar docker 
 helm
 minikube
@@ -57,8 +57,30 @@ docker push nombre-de-usuario/microser:latest
 
 con esto hecho, podremos acceder a nuestro dockerhub y ver que nuestro archivo ha sido subido de forma exitosa a docker.
 
-Como anotacion adiciona, deberemos cambira esta variale en el archivo compose, para poder permitirle a nuestro programa sacar la imagen desde nuestro propio dockerhub
+Como anotacion adicional, deberemos cambiar esta variale en el archivo compose, para poder permitirle a nuestro programa sacar la imagen desde nuestro propio dockerhub
 
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/3d8866fc-33d6-49f2-b6b4-f6fbd0a48fae)
 
+con esto hecho, pasaremos a la instalacion de kubernetes, minikubes y kompose para convertir nuestro archivo de compose a kubernetes.
 
+Primero, instalaremos kubernetes para ello podemos usar el siguiente comando, solo si tenemos curl instalado
+
+curl -LO https://dl.k8s.io/release/v1.28.4/bin/windows/amd64/kubectl.exe
+
+En caso contrario, podemos instalar el binario desde la siguiente pagina https://kubernetes.io/es/docs/tasks/tools/included/install-kubectl-windows/
+podemos comporobar que kubernetes se instalo correctamente con el siguiente comando:  
+
+kubectl version --short
+
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/7fd4962a-7cb5-4d46-9689-6ed8c49f61a7)
+
+Despues instalaremos kompose, este se puede instalar de forma sencilla con el siguiente comando 
+
+winget install Kubernetes.kompose
+
+podemos comprobar que kompose se instalo con el siguiente comando 
+
+kompose version
+
+Y ahora instalaremos nuestro servicio de minikubes. Para ello primero descargaremos el instalador de la ultima version desde el siguiente enlace: https://minikube.sigs.k8s.io/docs/start/
+con esto hecho, podemos
