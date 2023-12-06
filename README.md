@@ -41,3 +41,24 @@ irm get.scoop.sh | iex
 ahora tendremos scoop instalado
 
 Ahora descargaremos docker y crearemos una cuenta, esto para facilitarnos el uso de la imagen https://www.docker.com/products/docker-desktop/
+Con nuestro docker listo e instalado, vamos a correr el siguiente comando: docker compose up --build
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/cd6fdef6-d519-482f-934d-3040e13612a1)
+
+Con esto levantaremos nuestro servicio, el cual podremos ver en nuestra aplicacion de docker desktop:
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/2604346e-1ed7-4e85-98c7-b3205f1a2fb8)
+
+
+una vez que nuestro servicio este funcional, podremos subirlo a nuestra cuenta de dockerhub, para ello usaremos el siguiente 
+comando
+
+docker push nombre-de-usuario/microser:latest
+
+(este ultimo puede cambiar de acuerdo a la tagname que le agregemos al docker)
+
+con esto hecho, podremos acceder a nuestro dockerhub y ver que nuestro archivo ha sido subido de forma exitosa a docker.
+
+Como anotacion adiciona, deberemos cambira esta variale en el archivo compose, para poder permitirle a nuestro programa sacar la imagen desde nuestro propio dockerhub
+
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/3d8866fc-33d6-49f2-b6b4-f6fbd0a48fae)
+
+
