@@ -215,6 +215,7 @@ podemos confirmar que kube-monkey esta activo
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/129ab268-3b09-4815-b50d-b3c413c4824f)
 
 Ahora, no notaremos que el servicio caiga, aunque este este configurado para ello, esto se debe a que su yaml esta configurado para reiniciarse tan pronto el mismo servicio caiga
+
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/43490230-1c95-43a7-8ed4-8cf40424a65f)
 
 
