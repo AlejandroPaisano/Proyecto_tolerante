@@ -102,6 +102,7 @@ En caso de que esto no se pueda, podemos sobre escribir la variable de path entr
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/a054e2ff-a184-40cd-af36-63b7fd988759)
 
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/0bbc8cba-ad46-4b00-b0ea-127910aa1895)
+
 Aqui podemos modificar la variable path en ambos, la cuenta y el sistema para asegurarnos de que el cambio se refleje, para ello haremos doble click en la propia variable path, luego presionaremos el boton nuevo y escribiremos la direccion en la que se encuentra el exe de minikubes
 
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/3ac282d7-13b6-4d5e-bc78-37ad405ca4d9)
@@ -157,4 +158,64 @@ minikubes service nombre-de-la-aplicacion (en nuestro caso node-app)
 Ahora vamos a pasar a instalar istio, primero entraremos en el siguiente link  https://github.com/istio/istio/releases?ref=enmilocalfunciona.io para descargar el paquete de istion que corresponda a nuestro sistema operativo, para winddows es la version 1.19.4
 
 Ahora haremos lo mismo que con minikubes y agregaremos a las variables de path las direcciones del exe de istio, estas se suelen almacenar dentro de su carpetan bin.
+Ahora ejecutaremos el siguiente comando para configurar istio
+
+istio install --set profile=demo -y
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/f1b8c9bc-1401-41f3-9093-08e5bf8d3ddc)
+
+
+Y usaremos el siguiente comando para configurar permitir la inyeccion de istio en nuestros pods
+
+kubectl label namespace default istio-injection=enabled 
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/9f48d974-265f-4416-81d6-a33ed21e6441)
+
+Usando el comando kubectl get deployment -n istio-system comprobaremos que los elementos de istio estan activos
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/ce580e90-d760-446f-935b-40594ca691f8)
+
+Ahora borramos los deployments y lo services con los comandos:
+
+ kubectl delete deployment node-db
+ kubectl delete service node-db
+ kubectl delete deployment node-app
+ kubectl delete service node-app
+
+ Y volveremosa a levantar los servicios con los comandos apply
+
+ Con esto hecho, ahora los deployments tendran controladores de istio que nos permitiran seguir su telemetria usando el dashboard de kiali, este lo podemos levantar con el siguiente comando 
+
+ istioctl dashboard kiali
+ ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/fd0d0789-e1df-4bca-aa54-f4567cc18d3f)
+ 
+ ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/68ca3583-10f2-4f51-ab22-6e59d206a6ee)
+
+Aqui podremos ver los pods, mas importante, podremos ver el trafico entre ellos
+
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/d779f75b-64c3-4147-a3b2-7af55fba109e)
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/9891ba86-de65-465f-a908-594bfbcf6d79)
+
+Por ultimo, añadiremos kube-monkey, para ello primero instalaremos git. Entraremos a este link https://git-scm.com/download/win y usaremos el instalador, eligiendo las opciones por defecto
+
+Luego, usaremos scoop para instalar helm con el comando:
+
+scoop helm
+
+Despues, usaremos este comando para clonar el repositorio de kobe-monkey
+
+git clone https://github.com/asobti/kube-monkey
+
+Con esto hecho, usaremos el comando 
+
+helm install mmy-release kubemonkey/kube-monkey --version (numero de version dentro del repositorio)
+
+Para instalar kube monkey en nuestra carpeta, usandoe el comando
+
+kubectl get pods
+
+podemos confirmar que kube-monkey esta activo
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/129ab268-3b09-4815-b50d-b3c413c4824f)
+
+Ahora, no notaremos que el servicio caiga, aunque este este configurado para ello, esto se debe a que su yaml esta configurado para reiniciarse tan pronto el mismo servicio caiga
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/43490230-1c95-43a7-8ed4-8cf40424a65f)
+
+
 
