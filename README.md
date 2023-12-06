@@ -29,4 +29,15 @@ scoop
 Primero pasaremos a los detalles de instalacion:
 
 Para instalar helm, necesitaremos instalar scoop con anterioridad, para ello necesitaremos una version superior a la 5 de powershell (esto se puede saber escribiendo el comando Get-Host | Select-Object Version en un powershell). 
-E instalar .net en su version mas reciente https://dotnet.microsoft.com/es-es/download
+E instalar .net en su version mas reciente https://dotnet.microsoft.com/es-es/download (este es un ejecutable).
+
+Hecho esto, correremos estos dos comandos en un powershell 
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
+
+irm get.scoop.sh | iex
+
+
+ahora tendremos scoop instalado
+
+Ahora descargaremos docker y crearemos una cuenta, esto para facilitarnos el uso de la imagen https://www.docker.com/products/docker-desktop/
