@@ -85,7 +85,10 @@ kompose version
 Y ahora instalaremos nuestro servicio de minikubes. Para ello primero descargaremos el instalador de la ultima version desde el siguiente enlace: https://minikube.sigs.k8s.io/docs/start/
 con esto hecho, modificaremos la variable de entorno path con el siguiente comando en un powershell con permisos de administrador administrador:
 
-"$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine) ($oldPath.Split(';') -inotcontains 'C:\minikube'){[Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine) }"
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
+}
 
 En caso de que esto no se pueda, podemos sobre escribir la variable de path entrando en la aplicacion "editar las variables del entorno"
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/a054e2ff-a184-40cd-af36-63b7fd988759)
