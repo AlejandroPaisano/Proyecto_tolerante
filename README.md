@@ -32,6 +32,7 @@ minikube
 kubernetes
 istio
 scoop
+git
 
 Primero pasaremos a los detalles de instalacion:
 
@@ -148,4 +149,12 @@ minikubes tunnel
 para poder hacer un tunel de conexion entre nuestro equipo y los kubernetes
 
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/2b5673b8-cb57-4507-9942-c039282d539f)
+
+Y ahora podremos entrar a nuestro servicio desde kubernetes escribiendo el comando
+
+minikubes service nombre-de-la-aplicacion (en nuestro caso node-app)
+
+Ahora vamos a pasar a instalar istio, primero entraremos en el siguiente link  https://github.com/istio/istio/releases?ref=enmilocalfunciona.io para descargar el paquete de istion que corresponda a nuestro sistema operativo, para winddows es la version 1.19.4
+
+Ahora haremos lo mismo que con minikubes y agregaremos a las variables de path las direcciones del exe de istio, estas se suelen almacenar dentro de su carpetan bin.
 
