@@ -1,4 +1,11 @@
 # Proyecto_tolerante
+
+# Autores
+Alejandro Paisano Flores
+
+Luis Javier Cisneros Casillas
+
+# Introduccion
 Nuestra aplicacion creada con ayuda de node js, ejs y html genera una pequeña base de datos desde la cual podemos introducir articulos, buscar articulos dentro de la misma base, editarlos y eliminarlos de ser necesario.
 
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/41bb0693-9958-4955-822f-5473801c7dc9) 
@@ -109,3 +116,26 @@ minikube start
 ![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/cbdf208b-12c3-4db8-96e3-e7031ba8d6f3)
 
 (Para hacer uso de este comando, deberemos tener nuestra aplicacion de docker desktop activa)
+
+esto creara una imagen de docker llamada "minikube" y cmabiara el kubectl para usar minikubes como su repositorio por defecto para kubernetes. Ahora pasaremos a crear nuestros deployments y servicios, primero iniciaremos nuestros servicios con el comando kubectl apply -f nombre-del-deployment
+
+En este caso usaremos estos comandos:
+
+ kubectl apply -f node-db-deployment.yaml
+ kubectl apply -f node-db-service.yaml
+ kubectl apply -f node-db-data-persistentvolumeclaim.yaml
+ kubectl apply -f node-app-deployment.yaml
+ kubectl apply -f node-app-service.yaml
+ 
+Con esto tendremos nuestros servicios levantados y podremos verlos con los siguientes comandos:
+
+kubectl get pods  
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/662eb8fa-0b15-4a73-a534-c82d0f6e0c61)
+
+kubectl get svc
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/cf1f6d1d-3a8e-4632-9399-f7a7e71bb167)
+
+
+(ignorar el kube monkey y el dos en ready, eso se debe al istio que se vera mas adelante)
+
+Con esto hecho,
