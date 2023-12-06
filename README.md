@@ -138,4 +138,14 @@ kubectl get svc
 
 (ignorar el kube monkey y el dos en ready, eso se debe al istio que se vera mas adelante)
 
-Con esto hecho,
+Con esto hecho, podemos usar el comando de minikubes dashboard para poder lanzar un adshboard donde se mostrar el estado de los pods
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/039fc1d1-c977-48e7-9db6-8c3844a84e41)
+
+y ahora usaremos dos comandos:
+
+minikubes tunnel 
+
+para poder hacer un tunel de conexion entre nuestro equipo y los kubernetes
+
+![image](https://github.com/AlejandroPaisano/Proyecto_tolerante/assets/91223611/2b5673b8-cb57-4507-9942-c039282d539f)
+
